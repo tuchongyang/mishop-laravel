@@ -21,5 +21,7 @@ Route::get('/', [IndexController::class, 'show']);
 Route::get('/login', [LoginController::class, 'show']);
 Route::get('/register', [RegisterController::class, 'show']);
 
+Route::post('/register/action/save', [RegisterController::class, 'save']);
+
 
 Route::get('/admin', [AdminIndexController::class, 'show']);
