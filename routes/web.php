@@ -18,10 +18,13 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [IndexController::class, 'show']);
 
-Route::get('/login', [LoginController::class, 'show']);
+Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::get('/register', [RegisterController::class, 'show']);
 
+
+
+Route::post('/action/login', [LoginController::class, 'auth']);
 Route::post('/register/action/save', [RegisterController::class, 'save']);
 
 
-Route::get('/admin', [AdminIndexController::class, 'show']);
+Route::get('/admin', [AdminIndexController::class, 'show'])->middleware('auth');
