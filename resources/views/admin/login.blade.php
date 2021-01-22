@@ -21,7 +21,7 @@
               <div class="card-body">
                 <h1>Login</h1>
                 <p class="text-muted">Sign In to your account</p>
-                <form id="signupForm" onsubmit="return false">
+                <form id="signupForm" action="/action/login" method="post">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend"><span class="input-group-text">
                       <svg class="c-icon">
@@ -77,19 +77,19 @@
     <script>
       $.validator.setDefaults({
         submitHandler: function submitHandler(form,data) {
-          const postData = {
-            username: form.username.value,
-            password: form.password.value
-          }
-          $.ajax({
-            method:'post',
-            data: postData,
-            url: '/action/login',
-            success: function(res){
-              console.log(res)
-            }
-          })
-          return false
+          // const postData = {
+          //   username: form.username.value,
+          //   password: form.password.value
+          // }
+          // $.ajax({
+          //   method:'post',
+          //   data: postData,
+          //   url: '/action/login',
+          //   success: function(res){
+          //     console.log(res)
+          //   }
+          // })
+          return true
         }
       });
       $('#signupForm').validate({

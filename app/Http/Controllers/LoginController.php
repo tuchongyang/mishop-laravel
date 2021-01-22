@@ -39,10 +39,10 @@ class LoginController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-            return $this->success('登录成功');
+            return redirect()->intended('home');
         }
 
 
-        return $this->success($credentials);
+        return redirect()->intended('login');
     }
 }

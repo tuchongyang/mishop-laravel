@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class IndexController extends Controller
+class AdminGoodController extends Controller
 {
     /**
-     * 显示指定用户的简介
+     * 显示
      *
-     * @param  int  $id
+     * @param  
      * @return \Illuminate\View\View
      */
     public function show()
     {
-        $user = Auth::user();
-        return view('web.index',['user'=>$user]);
+        return view('admin.goods');
+    }
+    public function new()
+    {
+        return view('admin.goodsNew');
     }
 }
