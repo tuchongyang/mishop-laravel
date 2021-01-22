@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AdminIndexController extends Controller
 {
@@ -13,6 +14,7 @@ class AdminIndexController extends Controller
      */
     public function show()
     {
-        return view('admin.index');
+        $user = Auth::user();
+        return view('admin.index',['user'=>$user]);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 
 class RegisterController extends Controller
@@ -35,12 +36,12 @@ class RegisterController extends Controller
         $exists = DB::table('users')->where('email', $email)->exists();
 
         if($exists){
-            return $this->error("邮箱已注册");
+            return $this->error("邮箱已注册",null);
         }
         $user = DB::table('users')->insert([
             'username' => $username,
             'email' => $email,
-            'password' => Crypt::encryptString($password),
+            'password' => Hash::make($password)
         ]);
 
         return $this->success($user);

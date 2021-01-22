@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,15 +34,15 @@ class LoginController extends Controller
         $exists = DB::table('users')->where('username', $username)->exists();
 
         if(!$exists){
-            return $this->error("用户不存在");
+            return $this->error("用户不存在",null);
         }
-        $user = DB::table('users')->where('username', $username)->first();
+        $credentials = $request->only('username', 'password');
 
-        if($user->password != Crypt::encryptString($password)){
-            return $this->error("用户或密码错误",['password'=>$user->password,'npwd'=>Crypt::encryptString($password)]);
+        if (Auth::attempt($credentials)) {
+            return $this->success('登录成功');
         }
 
 
-        return $this->success($user);
+        return $this->success($credentials);
     }
 }
