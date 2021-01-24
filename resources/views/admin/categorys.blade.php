@@ -2,6 +2,7 @@
 @section('title','商品分类管理')
 
 @section('content')
+<script>var app = @json($datas)</script>
 <main class="c-main">
     <div class="container-fluid">
     <div class="fade-in">
@@ -12,15 +13,18 @@
                     <div class="float-right">
                         <a class="btn btn-primary" href="/admin/categorys/new">添加</a>
                     </div>
-                    <form class="form-inline" action="" method="post">
-                        <div class="form-group">
+                    <form class="form-inline" action="" method="get">
+                        <div class="form-group mr-2">
                             <label class="mr-1" for="exampleInputName2">名称</label>
-                            <input class="form-control" id="exampleInputName2" type="text" placeholder="请输入商品名称" autocomplete="name">
+                            <input class="form-control" id="exampleInputName2" type="text" placeholder="请输入名称" name="name" value="{{Request::input('name')}}" autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">搜索</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-body">
-                  <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                  <table class="table table-responsive-sm table-bordered table-striped ">
                     <thead>
                       <tr>
                         <th>名称</th>
@@ -39,7 +43,9 @@
                             <span class="badge badge-dark">不可用</span>
                           @endif
                         </td>
-                        <td></td>
+                        <td>
+                          <a href="/admin/categorys/new?id={{ $data->id }}" class="btn btn-primary">编辑</btn>
+                        </td>
                       </tr>
                       @endforeach
                       

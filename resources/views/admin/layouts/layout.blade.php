@@ -22,6 +22,7 @@
         <div class="c-wrapper">
             @include('admin.includes.header')
             <div class="c-body">
+                @include('admin.includes.message')
                 @yield('content')
             </div>
             @include('admin.includes.footer')

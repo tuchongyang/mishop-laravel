@@ -15,9 +15,14 @@ class AdminCategoryController extends Controller
      * @param  
      * @return \Illuminate\View\View
      */
-    public function show()
+    public function show(Request $request)
     {
-        $datas = DB::table('categorys')->paginate(2);
+        $name = $request->input('name');
+        $datas = DB::table('categorys')
+                    ->where('name','like','%'.$name.'%')
+                    ->paginate(10)
+                    ->appends($request->all());
+        
         return view('admin.categorys',['datas'=>$datas]);
     }
     public function new()
@@ -29,15 +34,15 @@ class AdminCategoryController extends Controller
     {
         $name = $request->input('name');
        
-        /**校验邮箱是否已存在 */
+        /**校验名称是否已存在 */
         $exists = DB::table('categorys')->where('name', $name)->exists();
 
         if($exists){
-            return redirect()->intended('/admin/categorys/new');
+            return redirect()->intended('/admin/categorys/new')->with(['status'=>'danger','message'=>'名称已存在!']);
         }
         $user = DB::table('categorys')->insert([
             'name' => $name,
         ]);
-        return redirect()->intended('/admin/categorys');
+        return redirect()->intended('/admin/categorys')->with(['status'=>'success','message'=>'添加成功!']);
     }
 }
