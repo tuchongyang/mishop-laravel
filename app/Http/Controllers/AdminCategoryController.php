@@ -30,7 +30,7 @@ class AdminCategoryController extends Controller
         return view('admin.categorysNew');
     }
 
-    public function create(Request $request)
+    public function save(Request $request)
     {
         $name = $request->input('name');
        
@@ -44,5 +44,13 @@ class AdminCategoryController extends Controller
             'name' => $name,
         ]);
         return redirect()->intended('/admin/categorys')->with(['status'=>'success','message'=>'添加成功!']);
+    }
+
+    public function remove($id)
+    {
+        /**校验邮箱是否已存在 */
+        $exists = DB::table('categorys')->where('id', $id)->delete();
+
+        return $this->success(true);
     }
 }

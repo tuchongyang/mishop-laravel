@@ -65,7 +65,6 @@
     <!--[if IE]><!-->
     <script src="vendors/@coreui/icons/js/svgxuse.min.js"></script>
     <!--<![endif]-->
-    <script src="vendors/jquery/js/jquery.min.js"></script>
     <script src="vendors/jquery-validation/js/jquery.validate.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function(event) {

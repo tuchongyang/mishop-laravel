@@ -36,6 +36,7 @@
         <!-- Plugins and scripts required by this view-->
         <script src="/vendors/@coreui/chartjs/js/coreui-chartjs.bundle.js"></script>
         <script src="/vendors/@coreui/utils/js/coreui-utils.js"></script>
+        <script src="/vendors/jquery/js/jquery.min.js"></script>
         <script src="/js/main.js"></script>
         <script>
         document.addEventListener("DOMContentLoaded", function(event) {

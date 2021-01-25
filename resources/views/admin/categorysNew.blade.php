@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                <form class="form-horizontal" action="/admin/categorys/create" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="/admin/categorys/save" method="post" enctype="multipart/form-data">
                     <div class="card-header">
                         添加商品分类
                     </div>

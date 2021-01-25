@@ -8,19 +8,26 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
+                <form class="form-horizontal" action="/admin/goods/save" method="post" enctype="multipart/form-data">
                     <div class="card-header">
                         添加商品
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                            <div class="form-group row">
-                            <label class="col-md-3 col-form-label" for="text-input">商品名称</label>
+                        @if(Request::input('id'))
+                            <input type="hidden" value="{{Request::input('id')}}" name="id">
+                        @endif
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="text-input">分类名称</label>
                             <div class="col-md-9">
-                                <input class="form-control" id="name" type="text" name="name" placeholder="请输入商品名称">
+                                <input class="form-control" id="name" type="text" name="name" placeholder="请输入分类名称">
                             </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                    <div class="card-footer">
+                      <button class="btn btn-primary" type="submit">提交</button>
+                      <a class="btn btn-danger" href="/admin/categorys">返回</a>
+                    </div>
+                        </form>
                 </div>
             </div>
         </div>
