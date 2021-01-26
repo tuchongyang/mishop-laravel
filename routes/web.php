@@ -34,5 +34,7 @@ Route::get('/admin/goods', [AdminGoodController::class, 'show'])->middleware('au
 Route::get('/admin/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
 Route::get('/admin/categorys', [AdminCategoryController::class, 'show'])->middleware('auth');
 Route::get('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
-Route::post('/admin/categorys/save', [AdminCategoryController::class, 'save'])->middleware('auth');
+Route::post('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
 Route::delete('/admin/categorys/{id}', [AdminCategoryController::class, 'remove'])->middleware('auth');
+Route::post('/admin/categorys/edit', [AdminCategoryController::class, 'edit'])->middleware('auth');
+Route::get('/admin/categorys/edit/{id}', [AdminCategoryController::class, 'edit'])->middleware('auth');

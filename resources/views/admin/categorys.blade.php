@@ -44,7 +44,7 @@
                           @endif
                         </td>
                         <td>
-                          <a href="/admin/categorys/new?id={{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
+                          <a href="/admin/categorys/edit/{{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
                           <a href="javascript:;" data-id="{{$data->id}}" data-name="{{$data->name}}" data-toggle="modal" data-target="#dangerModal" class="btn btn-danger ml-1 btn-sm btnRemove">删除</btn>
                         </td>
                       </tr>

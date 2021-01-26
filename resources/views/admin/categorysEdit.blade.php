@@ -8,15 +8,16 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                <form class="form-horizontal" action="/admin/categorys/new" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="/admin/categorys/edit" method="post" enctype="multipart/form-data">
                     <div class="card-header">
                         添加商品分类
                     </div>
                     <div class="card-body">
+                        <input type="hidden" value="{{Request::input('id')}}" name="id">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">分类名称</label>
                             <div class="col-md-9">
-                                <input class="form-control" id="name" type="text" name="name" placeholder="请输入分类名称" value="">
+                                <input class="form-control" id="name" type="text" name="name" placeholder="请输入分类名称" value="{{$data->name}}">
                             </div>
                         </div>
                     </div>
