@@ -53,7 +53,7 @@
                     </tbody>
                   </table>
                   <nav>
-                  <ul class="pagination">
+                  
                     {{ $datas->links() }}
                   </nav>
                 </div>

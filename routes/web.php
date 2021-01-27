@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminIndexController;
 use App\Http\Controllers\AdminGoodController;
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 /*
@@ -32,9 +33,21 @@ Route::post('/register/action/save', [RegisterController::class, 'save']);
 Route::get('/admin', [AdminIndexController::class, 'show'])->middleware('auth');
 Route::get('/admin/goods', [AdminGoodController::class, 'show'])->middleware('auth');
 Route::get('/admin/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
+Route::post('/admin/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
+Route::post('/admin/goods/edit', [AdminGoodController::class, 'edit'])->middleware('auth');
+Route::get('/admin/goods/edit/{id}', [AdminGoodController::class, 'edit'])->middleware('auth');
+Route::delete('/admin/goods/{id}', [AdminGoodController::class, 'remove'])->middleware('auth');
+
 Route::get('/admin/categorys', [AdminCategoryController::class, 'show'])->middleware('auth');
 Route::get('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
 Route::post('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
-Route::delete('/admin/categorys/{id}', [AdminCategoryController::class, 'remove'])->middleware('auth');
 Route::post('/admin/categorys/edit', [AdminCategoryController::class, 'edit'])->middleware('auth');
 Route::get('/admin/categorys/edit/{id}', [AdminCategoryController::class, 'edit'])->middleware('auth');
+Route::delete('/admin/categorys/{id}', [AdminCategoryController::class, 'remove'])->middleware('auth');
+
+
+Route::get('/admin/users', [AdminUserController::class, 'show'])->middleware('auth');
+Route::get('/admin/users/new', [AdminUserController::class, 'new'])->middleware('auth');
+Route::post('/admin/users/new', [AdminUserController::class, 'new'])->middleware('auth');
+Route::post('/admin/users/edit', [AdminUserController::class, 'edit'])->middleware('auth');
+Route::get('/admin/users/edit/{id}', [AdminUserController::class, 'edit'])->middleware('auth');

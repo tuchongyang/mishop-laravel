@@ -58,11 +58,12 @@ class AdminCategoryController extends Controller
         }
         else{
             $name = $request->input('name');
+            $id = $request->input('id');
             /**校验名称是否已存在 */
             $exists = DB::table('categorys')->where('name', $name)->where('id','<>',$id)->exists();
 
             if($exists){
-                return redirect()->intended('/admin/categorys/new?id='.$id)->with(['status'=>'danger','message'=>'名称已存在!']);
+                return redirect()->intended('/admin/categorys/edit/'.$id)->with(['status'=>'danger','message'=>'名称已存在!']);
             }
             $user = DB::table('categorys')->where('id',$id)
             ->update([
@@ -75,7 +76,6 @@ class AdminCategoryController extends Controller
 
     public function remove($id)
     {
-        /**校验邮箱是否已存在 */
         $exists = DB::table('categorys')->where('id', $id)->delete();
 
         return $this->success(true);

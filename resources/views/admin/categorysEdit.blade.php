@@ -13,7 +13,7 @@
                         添加商品分类
                     </div>
                     <div class="card-body">
-                        <input type="hidden" value="{{Request::input('id')}}" name="id">
+                        <input type="hidden" value="{{Request::route('id')}}" name="id">
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label" for="text-input">分类名称</label>
                             <div class="col-md-9">

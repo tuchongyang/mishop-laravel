@@ -1,5 +1,5 @@
 @extends('admin.layouts.layout')
-@section('title','商品管理')
+@section('title','用户管理')
 
 @section('content')
 <main class="c-main">
@@ -10,12 +10,12 @@
             <div class="card">
                     <div class="card-header">
                         <div class="float-right">
-                            <a class="btn btn-primary" href="/admin/goods/new">添加</a>
+                            <a class="btn btn-primary" href="/admin/users/new">添加</a>
                         </div>
                         <form class="form-inline" action="" method="post">
                             <div class="form-group">
-                                <label class="mr-1" for="exampleInputName2">商品名称</label>
-                                <input class="form-control" id="exampleInputName2" type="text" placeholder="请输入商品名称" autocomplete="name">
+                                <label class="mr-1" for="exampleInputName2">名称</label>
+                                <input class="form-control" id="exampleInputName2" type="text" placeholder="请输入名称" autocomplete="name">
                             </div>
                         </form>
                     </div>
@@ -23,24 +23,28 @@
                       <table class="table table-responsive-sm table-bordered table-striped ">
                         <thead>
                           <tr>
-                            <th>主图</th>
                             <th>名称</th>
-                            <th>分类</th>
-                            <th>价格</th>
-                            <th>销量</th>
+                            <th>用户名</th>
+                            <th>邮箱</th>
+                            <th>身份</th>
                             <th>操作</th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($datas as $data)
                           <tr>
-                            <td><img src="{{$data->pic}}" height="40px"></td>
                             <td>{{$data->name}}</td>
-                            <td>{{$data->category_name}}</td>
-                            <td>{{$data->sale_price}}</td>
-                            <td>{{$data->sales}}</td>
+                            <td>{{$data->username}}</td>
+                            <td>{{$data->email}}</td>
                             <td>
-                              <a href="/admin/goods/edit/{{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
+                                @if($data->is_admin)
+                                    <span class="badge badge-info">管理员</span>
+                                @else
+                                    <span class="badge badge-light">普通用户</span>
+                                @endif
+                            </td>
+                            <td>
+                              <a href="/admin/users/edit/{{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
                               <a href="javascript:;" data-id="{{$data->id}}" data-name="{{$data->name}}" data-toggle="modal" data-target="#dangerModal" class="btn btn-danger ml-1 btn-sm btnRemove">删除</btn>
                             </td>
                           </tr>
