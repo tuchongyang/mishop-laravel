@@ -10,6 +10,7 @@
         <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
         <title>@yield('title')|mishop商城</title>
         <!-- Main styles for this application-->
+        <link href="/fonts/iconfont.css" rel="stylesheet">
         <link href="/css/web.css" rel="stylesheet">
         @yield('head')
     </head>

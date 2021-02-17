@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,3 +52,9 @@ Route::get('/admin/users/new', [AdminUserController::class, 'new'])->middleware(
 Route::post('/admin/users/new', [AdminUserController::class, 'new'])->middleware('auth');
 Route::post('/admin/users/edit', [AdminUserController::class, 'edit'])->middleware('auth');
 Route::get('/admin/users/edit/{id}', [AdminUserController::class, 'edit'])->middleware('auth');
+
+Route::get('/category', [IndexController::class, 'category'])->name('category');
+Route::get('/product/detail', [IndexController::class, 'productDetail']);
+
+Route::get('/cart', [CartController::class, 'show']);
+Route::get('/checkout', [CartController::class, 'checkoutshow']);
