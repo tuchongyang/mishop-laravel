@@ -28674,3 +28674,5 @@ html:not([dir="rtl"]) .c-email-app .c-message-headers-date {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+.table-empty{text-align: center;border:1px solid #eee;padding: 30px 0;}
