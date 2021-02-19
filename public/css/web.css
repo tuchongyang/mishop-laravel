@@ -4,10 +4,16 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0
+* {
+    margin: 0;
+    padding: 0;
 }
-
+body {
+    font: 14px/1.5 Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+    color: #333;
+    background-color: #fff;
+    min-width: 1226px;
+}
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
     display: block
 }
@@ -182,11 +188,18 @@ table {
 td,th {
     padding: 0
 }
+li{list-style: none;}
 
 .hide {
     display: none!important;
 }
-
+.clearfix:after, .clearfix:before {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
 .container {
     width: 1226px;
     margin-right: auto;
@@ -1231,9 +1244,9 @@ td,th {
 .cart-bar .btn {width: 200px;height: 48px;line-height: 48px;font-size: 18px;margin-left: 50px;vertical-align: top;}
 
 .checkout-section{background: #f5f5f5;padding: 30px 0;}
-.checkout-section .container {background: #fff;}
+.checkout-section .container{background: #fff;}
 .checkout-detail{position: relative;padding: 48px 0 0;}
-.checkout-detail .detail-section {position: relative;padding: 0 24px;}
+.checkout-detail .detail-section{position: relative;padding: 0 24px;}
 .checkout-detail .address-detail .address-header {margin: 0 0 20px;}
 .checkout-detail .address-detail .address-header .header-title {color: #333;font-size: 18px;line-height: 20px;}
 .address-list .address-item {display: inline-block;width: 268px;height: 178px;border: 1px solid #e0e0e0;cursor: pointer;position: relative;margin-right: 17px;margin-bottom: 20px;vertical-align: top;-webkit-transition: all .4s ease;transition: all .4s ease;}
@@ -1249,6 +1262,8 @@ td,th {
 .address-list .address-action {text-align: right;position: absolute;right: 24px;bottom: 10px;opacity: 0}
 .address-list .address-action span {color: #ff6700;margin-left: 10px}
 .address-list .more-btn {margin-bottom: 30px;height: 50px;line-height: 50px;background-color: #eee;color: #424242;text-align: center;cursor: pointer}
+.address-list .add-desc {position: absolute;top: 50%;left: 50%;-webkit-transform: translate3d(-50%,-50%,0);transform: translate3d(-50%,-50%,0);color: #b0b0b0;}
+.address-list .iconfont {display: block;width: 30px;height: 30px;margin: 0 auto 8px;font-size: 30px;line-height: 30px;background-color: #e0e0e0;border-radius: 17px;text-align: center;-webkit-transition: all .4s ease;transition: all .4s ease;color: #fff;}
 .address-list .more-btn span .iconfont-normal {display: inline-block;margin-left: 3px;position: relative;top: -1px;font-size: 14px;vertical-align: middle}
 .checkout-detail .detail-section .detail-header {color: #333;font-size: 18px;line-height: 40px;}
 .goods-list {padding: 5px 0;border-bottom: 1px solid #e0e0e0;}
@@ -1265,3 +1280,52 @@ td,th {
 .goods-list .good-item .good-status {width: 100px;text-align: center}
 .goods-list .good-item .good-total {width: 190px;text-align: right;color: #ff6701}
 .goods-list .price-box .custom-made .link {float: right;color: #ff6700;margin-top: 15px}
+.checkout-detail .detail-section .section-options {padding: 25px 0;border-bottom: 1px solid #e0e0e0;}
+.checkout-detail .detail-section .section-options .options-desc{display: inline-block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.checkout-detail .detail-section .section-options .options-header {width: 150px;}
+.checkout-detail .detail-section .section-options .options-header .title {color: #333;font-size: 18px;line-height: 38px;}
+.checkout-detail .detail-section .section-options .options-list .options-item {display: inline-block;height: 38px;line-height: 38px;margin-right: 14px;border: 1px solid #fff;color: #333;}
+.checkout-detail .count-detail{position: relative;min-height: 200px;padding: 20px 0;margin: 0 48px;}
+.checkout-detail .count-detail .section-bill{position: absolute;right: 0;bottom: 20px;}
+.checkout-detail .count-detail .section-bill .bill-item{position: relative;padding-left: 126px;line-height: 2;text-align: right;}
+.checkout-detail .count-detail .section-bill .bill-item .bill-name{position: absolute;top: 0;left: 0;width: 126px;white-space: nowrap;color: #757575;}
+.checkout-detail .count-detail .section-bill .bill-item .bill-money{color: #ff6700;}
+.checkout-detail .count-detail .section-bill .total-price {margin: 10px 0 0;}
+.checkout-detail .count-detail .section-bill .total-price .bill-name {margin-top: 5px;}
+.checkout-detail .count-detail .section-bill .total-price em {font-size: 30px;line-height: 1;font-style: normal;}
+.checkout-detail .footer-detail {padding: 20px 48px;border-top: 2px solid #f5f5f5;}
+.checkout-detail .footer-detail .handle-action {float: right;}
+.checkout-detail .footer-detail .handle-action .btn {float: right;margin-left: 30px;vertical-align: top;}
+/* 用户中心 */
+.section-usercenter{background: #f5f5f5;padding-bottom: 30px;}
+.user-menu{width: 230px;float: left;background: #fff;}
+.user-menu .menu-box {margin: 0 48px 12px;}
+.user-menu .menu-box h3 {font-size: 16px;font-weight: 400;line-height: 52px;color: #333;margin: 0;padding: 0;}
+.user-menu .menu-box li {padding: 6px 0;}
+.user-menu .menu-box li a {color: #757575;}
+.user-menu .menu-box li.active a {color: #ff6700;}
+.user-box{margin-left: 250px;background: #fff;padding: 36px 48px;}
+.user-box .box-title{margin: 0;font-size: 30px;font-weight: 400;line-height: 68px;color: #757575;}
+/*我的订单*/
+.order-list .uc-order-item {margin-bottom: 20px;border: 1px solid #e0e0e0;position: relative;}
+.order-list-box .order-list .uc-order-item .order-remove {position: absolute;right: 15px;top: 15px;height: 20px;width: 20px;cursor: pointer;opacity: 0;filter: alpha(opacity=0)\9;}
+.order-list-box .order-list .uc-order-item .order-remove img {display: block;width: 100%;}
+.order-list-box .order-list .uc-order-item:hover .order-remove {opacity: 1;filter: alpha(opacity=100)\9}
+.order-list-box .order-summary {padding: 25px 30px 1px;}
+.order-list-box .order-list .uc-order-item .order-status {font-size: 18px;}
+.order-list-box .order-detail-table {width: 100%;}
+.order-list-box .order-detail-table th {height: 28px;padding: 0 30px 24px;border-bottom: 1px solid #e0e0e0;font-weight: 400;text-align: left;color: #757575;vertical-align: bottom;}
+.order-list-box .order-detail-table th.col-main {padding-right: 10px;}
+.order-list-box .order-detail-table th.col-sub {width: 240px;padding-left: 10px;text-align: right;}
+.order-list-box .order-list .uc-order-item-finish .order-detail-table th {border-bottom: 1px solid #e0e0e0;}
+.order-list-box .order-detail-table th .sep {color: #e0e0e0;margin: 0 .25em;}
+.order-list-box .order-detail-table th .num {height: 18px;margin-right: 5px;font-size: 28px;font-weight: 200;line-height: 1;color: #333;}
+.order-list-box .order-detail-table td {padding: 0 30px;}
+.order-list-box .order-detail-table .order-actions {padding-top: 20px;text-align: right;vertical-align: top;}
+.order-list-box .goods-list {margin: 0;padding: 10px 0;list-style-type: none;}
+.order-list-box .goods-list li {position: relative;height: 44px;margin: 10px 0;padding: 18px 18px 18px 100px;line-height: 22px;color: #333;}
+.order-list-box .goods-list .figure-thumb {position: absolute;left: 0;top: 0;}
+.order-list-box .goods-list .name a {color: #333;}
+.btn-small {width: 118px;height: 28px;font-size: 12px;line-height: 28px;}
+.order-list-box .btn-line-gray {border-color: #b0b0b0;background: #fff;color: #757575;}
+.order-list-box .order-detail-table .order-actions .btn {display: block;margin: 0 0 10px auto;}

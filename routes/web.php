@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,3 +59,5 @@ Route::get('/product/detail', [IndexController::class, 'productDetail']);
 
 Route::get('/cart', [CartController::class, 'show']);
 Route::get('/checkout', [CartController::class, 'checkoutshow']);
+
+Route::get('/user/order', [UserController::class, 'ordershow']);

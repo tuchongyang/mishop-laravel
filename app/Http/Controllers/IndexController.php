@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -21,7 +22,17 @@ class IndexController extends Controller
     public function category()
     {
         $user = Auth::user();
-        return view('web.category',['user'=>$user]);
+        $latestPosts = DB::table('goods');
+        $datas = DB::table('categorys')
+                ->join('goods', function ($join) {
+                    $join->on('categorys.id', '=', 'goods.category_id');
+                })
+                ->get();
+                    // ->joinSub($latestPosts, 'latest_posts', function ($join) {
+                    //     $join->on('categorys.id', '=', 'latest_posts.category_id');
+                    // })->get();
+
+        return view('web.category',['user'=>$user,'datas'=>$datas]);
     }
     public function productDetail()
     {

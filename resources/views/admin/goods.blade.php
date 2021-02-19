@@ -47,6 +47,9 @@
                           @endforeach
                         </tbody>
                       </table>
+                      @if (count($datas) == 0)
+                        <div class="table-empty">数据空空的</div>
+                      @endif
                       <nav>
                         {{ $datas->links() }}
                       </nav>
