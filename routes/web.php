@@ -32,28 +32,6 @@ Route::post('/action/login', [LoginController::class, 'auth']);
 Route::post('/register/action/save', [RegisterController::class, 'save']);
 
 
-Route::get('/admin', [AdminIndexController::class, 'show'])->middleware('auth');
-Route::get('/admin/goods', [AdminGoodController::class, 'show'])->middleware('auth');
-Route::get('/admin/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
-Route::post('/admin/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
-Route::post('/admin/goods/edit', [AdminGoodController::class, 'edit'])->middleware('auth');
-Route::get('/admin/goods/edit/{id}', [AdminGoodController::class, 'edit'])->middleware('auth');
-Route::delete('/admin/goods/{id}', [AdminGoodController::class, 'remove'])->middleware('auth');
-
-Route::get('/admin/categorys', [AdminCategoryController::class, 'show'])->middleware('auth');
-Route::get('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
-Route::post('/admin/categorys/new', [AdminCategoryController::class, 'new'])->middleware('auth');
-Route::post('/admin/categorys/edit', [AdminCategoryController::class, 'edit'])->middleware('auth');
-Route::get('/admin/categorys/edit/{id}', [AdminCategoryController::class, 'edit'])->middleware('auth');
-Route::delete('/admin/categorys/{id}', [AdminCategoryController::class, 'remove'])->middleware('auth');
-
-
-Route::get('/admin/users', [AdminUserController::class, 'show'])->middleware('auth');
-Route::get('/admin/users/new', [AdminUserController::class, 'new'])->middleware('auth');
-Route::post('/admin/users/new', [AdminUserController::class, 'new'])->middleware('auth');
-Route::post('/admin/users/edit', [AdminUserController::class, 'edit'])->middleware('auth');
-Route::get('/admin/users/edit/{id}', [AdminUserController::class, 'edit'])->middleware('auth');
-
 Route::get('/category', [IndexController::class, 'category'])->name('category');
 Route::get('/product/detail', [IndexController::class, 'productDetail']);
 
@@ -61,3 +39,36 @@ Route::get('/cart', [CartController::class, 'show']);
 Route::get('/checkout', [CartController::class, 'checkoutshow']);
 
 Route::get('/user/order', [UserController::class, 'ordershow']);
+
+Route::group(
+[
+    'prefix' => '/admin',
+    // 'namespace' => 'admin',
+    'middleware' => 'admin'
+], function()
+{
+    Route::get('/', [AdminIndexController::class, 'show'])->middleware('auth');
+    Route::get('/goods', [AdminGoodController::class, 'show'])->middleware('auth');
+    Route::get('/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
+    Route::post('/goods/new', [AdminGoodController::class, 'new'])->middleware('auth');
+    Route::post('/goods/edit', [AdminGoodController::class, 'edit'])->middleware('auth');
+    Route::get('/goods/edit/{id}', [AdminGoodController::class, 'edit'])->middleware('auth');
+    Route::delete('/goods/{id}', [AdminGoodController::class, 'remove'])->middleware('auth');
+    Route::post('/goods/editspec', [AdminGoodController::class, 'editspec'])->middleware('auth');
+    Route::get('/goods/editspec/{id}', [AdminGoodController::class, 'editspec'])->middleware('auth');
+
+    Route::get('/categories', [AdminCategoryController::class, 'show'])->middleware('auth');
+    Route::get('/categories/new', [AdminCategoryController::class, 'new'])->middleware('auth');
+    Route::post('/categories/new', [AdminCategoryController::class, 'new'])->middleware('auth');
+    Route::post('/categories/edit', [AdminCategoryController::class, 'edit'])->middleware('auth');
+    Route::get('/categories/edit/{id}', [AdminCategoryController::class, 'edit'])->middleware('auth');
+    Route::delete('/categories/{id}', [AdminCategoryController::class, 'remove'])->middleware('auth');
+
+
+    Route::get('/users', [AdminUserController::class, 'show'])->middleware('auth');
+    Route::get('/users/new', [AdminUserController::class, 'new'])->middleware('auth');
+    Route::post('/users/new', [AdminUserController::class, 'new'])->middleware('auth');
+    Route::post('/users/edit', [AdminUserController::class, 'edit'])->middleware('auth');
+    Route::get('/users/edit/{id}', [AdminUserController::class, 'edit'])->middleware('auth');
+
+});

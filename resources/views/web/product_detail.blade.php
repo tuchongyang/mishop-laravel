@@ -2,21 +2,22 @@
 @section('title','首页')
 
 @section('content')
+<script>var app = @json($data)</script>
 <div class="detail-map-nav">
     <div class="container">
-        <div class="title">小米11</div>
+        <div class="title">{{$data->name}}</div>
     </div>
 </div>
 <div class="product-detail">
     <div class="container">
         <div class="product-head">
             <div class="img">
-                <img src="https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1606288963.72951431.jpg">
+                <img src="{{$data->pic}}">
             </div>
             <div class="det">
-                <div class="tit">小米11</div>
-                <div class="desc">adad阿三大三大四的阿达范德萨发斯蒂芬阿斯蒂芬大所大所大所多阿斯打扫打扫大苏打阿三大四的</div>
-                <div class="price-info">1933 元</div>
+                <div class="tit">{{$data->name}}</div>
+                <div class="desc">{{$data->description}}</div>
+                <div class="price-info">{{$data->sale_price}} 元</div>
                 <div class="line"></div>
                 <div class="spec">
                     <div class="spec-tit">规格</div>

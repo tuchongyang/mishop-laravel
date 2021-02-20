@@ -20,8 +20,8 @@ class AdminGoodController extends Controller
         $name = $request->input('name');
         $datas = DB::table('goods')
                     ->where('goods.name','like','%'.$name.'%')
-                    ->join('categorys', 'goods.category_id', '=', 'categorys.id')
-                    ->select('goods.*','categorys.name as category_name')
+                    ->join('categories', 'goods.category_id', '=', 'categories.id')
+                    ->select('goods.*','categories.name as category_name')
                     ->paginate(10)
                     ->appends($request->all());
         return view('admin.goods',['datas'=>$datas]);
@@ -29,7 +29,7 @@ class AdminGoodController extends Controller
     public function new(Request $request)
     {
         if($request->isMethod('get')){
-            $categories = DB::table('categorys')->get();
+            $categories = DB::table('categories')->get();
             return view('admin.goodsNew',['categories'=>$categories]);
         }
         else{
@@ -64,7 +64,7 @@ class AdminGoodController extends Controller
     public function edit(Request $request,$id=0)
     {
         if($request->isMethod('get')){
-            $categories = DB::table('categorys')->get();
+            $categories = DB::table('categories')->get();
             $data = DB::table('goods')->where('id',$id)->first();
             return view('admin.goodsEdit',['data'=>$data,'categories'=>$categories]);
         }
@@ -91,5 +91,28 @@ class AdminGoodController extends Controller
         $exists = DB::table('goods')->where('id', $id)->delete();
 
         return $this->success(true);
+    }
+    public function editspec(Request $request,$id=0)
+    {
+        if($request->isMethod('get')){
+            $data = DB::table('goods')->where('id',$id)->first();
+            return view('admin.goodsEditSpec',['data'=>$data]);
+        }
+        else{
+            $name = $request->input('name');
+            $id = $request->input('id');
+            /**校验名称是否已存在 */
+            $exists = DB::table('goods')->where('name', $name)->where('id','<>',$id)->exists();
+
+            if($exists){
+                return redirect()->intended('/admin/goods/edit/'.$id)->with(['status'=>'danger','message'=>'名称已存在!']);
+            }
+            $user = DB::table('goods')->where('id',$id)
+            ->update([
+                'name' => $name,
+            ]);
+            return redirect()->intended('/admin/goods')->with(['status'=>'success','message'=>'修改成功!']);
+        }
+        
     }
 }

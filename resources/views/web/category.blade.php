@@ -15,36 +15,14 @@
         <div class="category-item">
             <div class="title">{{$data->name}}</div>
             <div class="category-list">
+                @foreach ($data->goods as $good)
                 <div class="item">
                     <a href="javascript:;">
-                    <div class="figure-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg?thumb=1&w=200&h=200&f=webp&q=90"></div>
-                    <h3 class="title">小米手机11</h3>
+                    <div class="figure-img"><img src="{{$good->pic}}"></div>
+                    <h3 class="title">{{$good->name}}</h3>
                     </a>
                 </div>
-                <div class="item">
-                    <a href="javascript:;">
-                    <div class="figure-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg?thumb=1&w=200&h=200&f=webp&q=90"></div>
-                    <h3 class="title">小米手机11</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;">
-                    <div class="figure-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg?thumb=1&w=200&h=200&f=webp&q=90"></div>
-                    <h3 class="title">小米手机11</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;">
-                    <div class="figure-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg?thumb=1&w=200&h=200&f=webp&q=90"></div>
-                    <h3 class="title">小米手机11</h3>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="javascript:;">
-                    <div class="figure-img"><img src="//cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a260090e0e08770b0bd865845a4b4ab.jpg?thumb=1&w=200&h=200&f=webp&q=90"></div>
-                    <h3 class="title">小米手机11</h3>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
         

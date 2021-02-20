@@ -14,7 +14,7 @@
             <div class="card">
               <div class="card-header">
                 <div class="float-right">
-                  <a class="btn btn-primary" href="/admin/categorys/new">添加</a>
+                  <a class="btn btn-primary" href="/admin/categories/new">添加</a>
                 </div>
                 <form class="form-inline" action="" method="get">
                   <div class="form-group mr-2">
@@ -48,7 +48,7 @@
                           @endif
                         </td>
                         <td>
-                          <a href="/admin/categorys/edit?id={{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
+                          <a href="/admin/categories/edit?id={{ $data->id }}" class="btn btn-primary btn-sm">编辑</btn>
                             <a href="javascript:;" data-id="{{ $data->id }}" data-name="{{ $data->name }}"
                               data-toggle="modal" data-target="#dangerModal"
                               class="btn btn-danger ml-1 btn-sm btnRemove">删除</btn>
@@ -104,7 +104,7 @@
       })
       $('#btnSave').click(function() {
         $.ajax({
-          url: '/admin/categorys/' + id,
+          url: '/admin/categories/' + id,
           method: "delete",
           success: function() {
             location.reload()

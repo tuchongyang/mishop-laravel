@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Good;
 
 class IndexController extends Controller
 {
@@ -17,26 +20,20 @@ class IndexController extends Controller
     public function show()
     {
         $user = Auth::user();
-        return view('web.index',['user'=>$user]);
+        $datas = Category::with('goods')->get();
+        return view('web.index',['user'=>$user,'datas'=>$datas]);
     }
     public function category()
     {
         $user = Auth::user();
-        $latestPosts = DB::table('goods');
-        $datas = DB::table('categorys')
-                ->join('goods', function ($join) {
-                    $join->on('categorys.id', '=', 'goods.category_id');
-                })
-                ->get();
-                    // ->joinSub($latestPosts, 'latest_posts', function ($join) {
-                    //     $join->on('categorys.id', '=', 'latest_posts.category_id');
-                    // })->get();
+        $datas = Category::with('goods')->get();
 
         return view('web.category',['user'=>$user,'datas'=>$datas]);
     }
-    public function productDetail()
+    public function productDetail(Request $request)
     {
-        $user = Auth::user();
-        return view('web.product_detail',['user'=>$user]);
+        $id = $request->input('id');
+        $data = Good::where('id','=',$id)->first();
+        return view('web.product_detail',['data'=>$data]);
     }
 }

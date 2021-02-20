@@ -19,8 +19,18 @@
                     </div>
                 </div>
             </div>
+            @if(!$user)
             <div id="J_siteUserInfo" class="topbar-info">
-                <a class="link" href="/login">登录</a> <span class="sep">|</span> <a href="javascript:void(0);" class="link" data-href="/register">注册</a><span class="sep">|</span><span class="message"><a href="javascript:void(0);" class="J_needAgreement">消息通知<i class="J_miMessageTotal"></i></a></span></div>
+                <a class="link" href="/login">登录</a> <span class="sep">|</span> <a href="javascript:void(0);" class="link" data-href="/register">注册</a><span class="sep">|</span><span class="message"><a href="javascript:void(0);" class="J_needAgreement">消息通知<i class="J_miMessageTotal"></i></a></span>
+            </div>
+            @else
+            <div id="J_siteUserInfo" class="topbar-info">
+                <a class="link" href="/user/order"><i class="iconfont icon-info-circle"></i> {{$user->username}}</a><span class="sep">|</span>
+                @if($user->is_admin)
+                <a href="/admin" class="link">管理后台</a>
+                @endif
+            </div>
+            @endif
         </div>
         </div>
     </div>
